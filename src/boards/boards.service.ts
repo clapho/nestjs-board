@@ -7,9 +7,13 @@ import {BoardStatus} from "./board-status.enum";
 
 @Injectable()
 export class BoardsService {
-    constructor(@InjectRepository(BoardRepository) private boardRepository: BoardRepository,) {}
+    constructor(
+        @InjectRepository(BoardRepository)
+        private boardRepository: BoardRepository,
+    ) {
+    }
 
-    async getBoardById(id: number): Promise <Board> {
+    async getBoardById(id: number): Promise<Board> {
         const found = await this.boardRepository.findOneBy({id});
 
         if (!found) {
